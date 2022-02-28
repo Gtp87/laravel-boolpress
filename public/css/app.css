@@ -12178,3 +12178,15 @@ fieldset:disabled .btn {
   }
 }
 
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: green;
+  border-color: green;
+}
+
+.page-link,
+.page-link:hover {
+  color: green;
+}
+

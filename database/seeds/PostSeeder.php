@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use App\Model\Post;
 use Illuminate\Support\Str;
+use App\User;
 
 class PostSeeder extends Seeder
 {
@@ -20,6 +21,7 @@ class PostSeeder extends Seeder
             $newPost->author = $faker->name();
             $newPost->content = $faker->text();
             $newPost->slug = Str::slug($newPost->title . '-' . $i, '-');
+            $newPost->user_id = User::inRandomOrder()->First()->id;
             $newPost->save();
         }
     }

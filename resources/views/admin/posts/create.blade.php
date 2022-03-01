@@ -37,7 +37,7 @@
                             </div>
                         @enderror
                     </div>
-
+                    <input type="hidden" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
                     <input class="btn btn-success" type="submit" value="Salva">
                 </form>
             </div>

@@ -21,5 +21,6 @@
                 {{ $post->content }}
             </div>
         </div>
+        <a  class="btn btn-success"  aria-current="page" href="{{ route('admin.posts.index') }}">Back</a>
     </div>
 @endsection

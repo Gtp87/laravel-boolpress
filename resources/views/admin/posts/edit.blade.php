@@ -39,7 +39,8 @@
         @enderror
     </div>
     
-    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a  class="btn btn-success"  aria-current="page" href="{{ route('admin.posts.index') }}">Back</a>
     </form>
 </div>
 </div>

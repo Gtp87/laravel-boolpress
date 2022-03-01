@@ -63,7 +63,7 @@ class PostController extends Controller
         $newPost->slug = $slug;
         $newPost->save();
 
-        return redirect()->route('admin.posts.show', $newPost->slug);
+        return redirect()->route('admin.posts.show', $newPost);
     }
 
     /**
@@ -108,8 +108,7 @@ class PostController extends Controller
             dd('aggiornamento non riuscito');
         }
         return redirect()
-            ->route('admin.posts.show', $post->slug)
-            ->with('status', "Post $post->title saved");
+            ->route('admin.posts.show', $post);
     }
 
     /**
@@ -124,6 +123,6 @@ class PostController extends Controller
 
         return redirect()
             ->route('admin.posts.index')
-            ->with('status', "Post id $post->slug deleted");
+            ->with('status', "Post id $post->id deleted");
     }
 }

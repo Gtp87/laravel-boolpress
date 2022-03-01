@@ -38,8 +38,8 @@
                         <td>{{ $post->author }}</td>
                         <td>{{ $post->content }}</td>
                         <td>{{ $post->slug }}</td>
-                        <td><a class="btn btn-success" href="{{ route('admin.posts.show', $post->slug) }}">View</a></td>
-                        <td><a class="btn btn-success" href="{{ route('admin.posts.edit', $post->slug) }}">Edit</a></td>
+                        <td><a class="btn btn-success" href="{{ route('admin.posts.show', $post->id) }}">View</a></td>
+                        <td><a class="btn btn-success" href="{{ route('admin.posts.edit', $post->id) }}">Edit</a></td>
                         <td>
                             <form action="{{route('admin.posts.destroy', $post->id)}}" method="post">
                                 @csrf

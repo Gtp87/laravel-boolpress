@@ -38,15 +38,15 @@
                         <td>{{ $post->author }}</td>
                         <td>{{ $post->content }}</td>
                         <td>{{ $post->slug }}</td>
-                        {{-- <td><a class="btn btn-success" href="{{ route('posts.show', $post) }}">View</a></td>
-                        <td><a class="btn btn-success" href="{{ route('posts.edit', $post) }}">Edit</a></td>
+                        <td><a class="btn btn-success" href="{{ route('admin.posts.show', $post->slug) }}">View</a></td>
+                        <td><a class="btn btn-success" href="{{ route('admin.posts.edit', $post->slug) }}">Edit</a></td>
                         <td>
-                            <form action="{{route('cposts.destroy', $cpost->id)}}" method="post">
+                            <form action="{{route('admin.posts.destroy', $post->id)}}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <input class="btn btn-danger" type="submit" value="Delete">
                             </form>
-                        </td> --}}
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

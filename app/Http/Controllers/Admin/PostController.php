@@ -63,7 +63,7 @@ class PostController extends Controller
         $newPost->slug = $slug;
         $newPost->save();
 
-        return redirect()->route('admin.posts.show', ['post' => $newPost]);
+        return redirect()->route('admin.posts.show', $newPost->slug);
     }
 
     /**
@@ -74,7 +74,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        dd($post);
+        return view('admin.posts.show', ['post' => $post]);
     }
 
     /**
@@ -83,9 +83,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', ['post' => $post]);
     }
 
     /**
@@ -95,9 +95,21 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $validateData = $request->validate([
+            'title' => 'required|max:255',
+            'author' => 'required|max:255',
+            'content' => 'required',
+        ]);
+        $data = $request->all();
+        $updated = $post->update($data);
+        if (!$updated) {
+            dd('aggiornamento non riuscito');
+        }
+        return redirect()
+            ->route('admin.posts.show', $post->slug)
+            ->with('status', "Post $post->title saved");
     }
 
     /**
@@ -106,8 +118,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()
+            ->route('admin.posts.index')
+            ->with('status', "Post id $post->slug deleted");
     }
 }

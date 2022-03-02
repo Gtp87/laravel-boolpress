@@ -27,7 +27,7 @@
                         <th>Title</th>
                         <th>Author</th>
                         <th class="w-50">Content</th>
-                        <th>Slug</th>
+                        <th>Category</th>
                         <th colspan="3">Actions</th>
                     </tr>
                 </thead>
@@ -37,15 +37,22 @@
                         <td class="text-capitalize">{{ $post->title }}</td>
                         <td>{{ $post->author }}</td>
                         <td>{{ $post->content }}</td>
-                        <td>{{ $post->slug }}</td>
+                        <td>{{ $post->category()->first()->name }}</td>
                         <td><a class="btn btn-success" href="{{ route('admin.posts.show', $post->slug) }}">View</a></td>
-                        <td><a class="btn btn-success" href="{{ route('admin.posts.edit', $post->slug) }}">Edit</a></td>
                         <td>
-                            <form action="{{route('admin.posts.destroy', $post->slug)}}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <input class="btn btn-danger" type="submit" value="Delete">
-                            </form>
+                            @if (Auth::user()->id === $post->user_id)
+                                <a class="btn btn-success"
+                                    href="{{ route('admin.posts.edit', $post->slug) }}">Edit</a>
+                            @endif
+                        </td>
+                        <td>
+                            @if (Auth::user()->id === $post->user_id)
+                                <form action="{{ route('admin.posts.destroy', $post) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input class="btn btn-danger" type="submit" value="Delete">
+                                </form>
+                            @endif
                         </td>
                     </tr>
                 @endforeach

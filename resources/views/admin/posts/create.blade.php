@@ -8,7 +8,20 @@
                 <form action="{{ route('admin.posts.store') }}" method="POST">
                     @csrf
                     @method('POST')
-
+                    <div class="mb-3">
+                    <select class="form-select" name="category_id">
+                        <option value="">Select a category</option>
+                        @foreach ($categories as $category)
+                            <option @if (old('category_id') == $category->id) selected @endif value="{{ $category->id }}">
+                                {{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('category_id')
+                        <div class="alert alert-danger mt-3">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
                         <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
@@ -18,9 +31,8 @@
                             </div>
                         @enderror
                     </div>
-                        <div class="mb-3">
-                        <label for="author" class="form-label">Author</label>
-                        <input type="text" class="form-control" id="author" name="author" value="{{ old('author') }}">
+                    <div class="mb-3">
+                        <h4>Author: {{Auth::user()->name}}</h4>
                         @error('author')
                             <div class="alert alert-danger">
                                 {{ $message }}

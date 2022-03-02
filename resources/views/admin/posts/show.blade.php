@@ -14,6 +14,8 @@
                 <h1>
                     {{ $post->title }}
                 </h1>
+                <h2>Category: {{ $post->category()->first()->name }} </h2>
+                <h3>Author: {{ $post->user()->first()->name }} </h3>
             </div>
         </div>
         <div class="row">

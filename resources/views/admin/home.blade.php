@@ -20,5 +20,12 @@
             </div>
         </div>
     </div>
+    <div class="row mt-5">
+            <div class="col">
+                <h1>
+                    Welcome {{ Auth::user()->name }} 
+                </h1>
+            </div>
+        </div>
 </div>
 @endsection

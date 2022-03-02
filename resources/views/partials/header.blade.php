@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg @guest navbar-light light-dark @endguest @auth navbar-dark bg-dark @endauth">
+<nav class="navbar navbar-expand-lg @guest navbar-light light-dark @endguest @auth navbar-success bg-success @endauth">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('guest.index') }}">{{ config('app.name', 'Laravel') }}</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"

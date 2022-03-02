@@ -51,6 +51,7 @@
                     </div>
                     <input type="hidden" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
                     <input class="btn btn-success" type="submit" value="Salva">
+                    <a class="btn btn-success" href="{{ url()->previous() }}">Back</a>
                 </form>
             </div>
         </div>

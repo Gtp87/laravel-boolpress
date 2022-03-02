@@ -21,14 +21,14 @@
     </div>
     <div class="row">
         <div class="col">
-                <table class="table table-success">
+                <table class="table table-success table-striped table-hover">
                 <thead>
                     <tr class="table-success">
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th class="w-50">Content</th>
-                        <th>Category</th>
-                        <th colspan="3">Actions</th>
+                        <th class="text-center">Title</th>
+                        <th class="text-center">Author</th>
+                        <th class="text-center"class="w-50">Content</th>
+                        <th class="text-center">Category</th>
+                        <th class="text-center"colspan="3" class="text-center">Actions</th>
                     </tr>
                 </thead>
                 <tbody>

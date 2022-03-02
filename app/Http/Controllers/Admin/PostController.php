@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
+    protected $validateData = [
+        'title' => 'required|max:255',
+        'author' => 'required|max:255',
+        'content' => 'required|max:255'
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -56,6 +61,7 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'author' => 'required|max:255',
             'content' => 'required',
+            'category_id' => 'exists:App\Model\Category,id'
         ]);
 
         $data = $request->all();
@@ -112,7 +118,7 @@ class PostController extends Controller
         $validateData = $request->validate([
             'title' => 'required|max:255',
             'content' => 'required',
-            'category_id' => 'exsist:App\Model\Category,id',
+            'category_id' => 'exists:App\Model\Category,id',
         ]);
         $data = $request->all();
         if (Auth::user()->id != $post->user_id) {

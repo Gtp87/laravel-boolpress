@@ -10,7 +10,7 @@
                 @guest
                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                     @if (Route::has('register'))
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <a class="nav-link " href="{{ route('register') }}">{{ __('Register') }}</a>
                     @endif
                 @else
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">

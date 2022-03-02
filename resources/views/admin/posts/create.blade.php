@@ -32,7 +32,8 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <h4>Author: {{Auth::user()->name}}</h4>
+                        <label for="author" class="form-label">author</label>
+                        <input type="text" class="form-control" id="author" name="author" value="{{ old('author') }}">
                         @error('author')
                             <div class="alert alert-danger">
                                 {{ $message }}

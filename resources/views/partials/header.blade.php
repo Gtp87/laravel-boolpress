@@ -17,6 +17,7 @@
                         @csrf
                         <input type="submit" class="btn btn-light" value="Logout">
                     </form>
+                    <a  class="btn btn-light ms-1"  aria-current="page" href="{{ route('admin.posts.index') }}">Go to Post</a>
                 @endguest
             </div>
         </div>

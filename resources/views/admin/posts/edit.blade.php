@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('documentTitle')
-    Edit
+    Edit {{$post->title}}
 @endsection
 
 @section('content')
@@ -18,27 +18,12 @@
         @enderror
     </div>
     <div class="mb-3">
-        <label for="author" class="form-label">Author</label>
-        <input type="text" class="form-control" id="author" name="author" value="{{$post->author}}">
-        @error('author')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
-    <div class="mb-3">
         <label for="content" class="form-label">content</label>
         <textarea class="form-control" id="content" name="content" >{{$post->content}}</textarea>
         @error('content')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
-    <div class="mb-3">
-        <label for="slug" class="form-label">slug</label>
-        <input type="text" class="form-control" id="slug" name="slug" value="{{$post->slug}}">
-        @error('slug')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
-    
     <button type="submit" class="btn btn-success">Save</button>
     <a  class="btn btn-success"  aria-current="page" href="{{ route('admin.posts.index') }}">Back</a>
     </form>

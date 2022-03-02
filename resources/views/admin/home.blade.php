@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -15,7 +15,7 @@
                     @endif
 
                     {{ __('You are logged in!') }}
-                    <a class="btn btn-success" href="{{ route('admin.posts.index') }}">View Posts</a>
+                    {{-- <a class="btn btn-success" href="{{ route('admin.posts.index') }}">View Posts</a> --}}
                 </div>
             </div>
         </div>

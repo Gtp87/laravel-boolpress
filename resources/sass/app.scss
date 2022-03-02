@@ -6,6 +6,7 @@
 
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
+@import "~bootstrap-icons/font/bootstrap-icons.scss";
 
 .page-item.active .page-link {
     z-index: 3;
@@ -16,5 +17,9 @@
 
 .page-link,
 .page-link:hover {
+    color: green;
+}
+
+.nav-link {
     color: green;
 }

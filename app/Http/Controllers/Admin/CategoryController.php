@@ -113,9 +113,9 @@ class CategoryController extends Controller
     public function destroy(Category $category, Post $posts)
     {
         $category->delete();
-        $nullPosts = Post::whereNull('category_id')->get();
+        $postsNull = Post::whereNull('category_id')->get();
 
-        foreach ($nullPosts as $post) {
+        foreach ($postsNull as $post) {
             $post->category_id = 1;
             $post->update();
         }

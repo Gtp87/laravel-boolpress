@@ -57,15 +57,19 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+
+        $data = $request->all();
+        $data['user_id'] = Auth::user()->id;
+        $data['author'] = Auth::user()->name;
+        // dd($data);
         $validateData = $request->validate([
             'title' => 'required|max:255',
-            'author' => 'required|max:255',
             'content' => 'required',
             'category_id' => 'exists:App\Model\Category,id'
         ]);
 
-        $data = $request->all();
-        $data['user_id'] = Auth::user()->id;
+
+
 
 
 

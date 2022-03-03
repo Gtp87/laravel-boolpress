@@ -31,15 +31,10 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="mb-3">
-                        <label for="author" class="form-label">author</label>
-                        <input type="text" class="form-control" id="author" name="author" value="{{ old('author') }}">
-                        @error('author')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
+                    <div class="mb-3"> 
+                        <label for="author" class="form-label">Author</label>
+                        <input type="text" disabled class="form-control" id="author" name="author" value="{{ Auth::user()->name }}"> 
+                    </div> 
                     <div class="mb-3">
                         <label for="content" class="form-label">Content</label>
                         <textarea class="form-control" id="content" rows="3"
@@ -50,7 +45,7 @@
                             </div>
                         @enderror
                     </div>
-                    <input type="hidden" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
+
                     <input class="btn btn-success" type="submit" value="Save">
                     <a class="btn btn-success" href="{{ url()->previous() }}">Back</a>
                 </form>

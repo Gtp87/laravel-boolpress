@@ -14,6 +14,11 @@ class CategorySeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+        $newCategory = new Category();
+        $newCategory->name = 'general';
+        $newCategory->slug = 'general';
+        $newCategory->save();
+
         for ($i = 0; $i < 6; $i++) {
             $newCategory = new Category();
             $newCategory->name = $faker->words(2, true);

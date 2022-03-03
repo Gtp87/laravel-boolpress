@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg @guest navbar-light light-dark @endguest @auth navbar-success bg-success @endauth">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ route('guest.index') }}">{{ config('app.name', 'Laravel') }}</a>
+        <a class="navbar-brand" href=" @guest{{ route('guest.index') }} @endguest @auth {{route('admin.home')}} @endauth">{{ config('app.name', 'Laravel') }}</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -17,7 +17,6 @@
                         @csrf
                         <input type="submit" class="btn btn-light" value="Logout">
                     </form>
-                    <a  class="btn btn-light ms-1"  aria-current="page" href="{{ route('admin.posts.index') }}">All Posts</a>
                 @endguest
             </div>
         </div>

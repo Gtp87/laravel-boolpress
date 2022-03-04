@@ -16,6 +16,11 @@
                 </h1>
                 <h2>Category: {{ $post->category()->first()->name }} </h2>
                 <h3>Author: {{ $post->user()->first()->name }} </h3>
+                <h4>Tag:   
+                    @foreach ($post->tags()->get() as $tag)
+                        {{ $tag->name }}
+                    @endforeach
+                </h4>
             </div>
         </div>
         <div class="row">

@@ -28,6 +28,7 @@
                         <th class="text-center">Author</th>
                         <th class="text-center"class="w-50">Content</th>
                         <th class="text-center">Category</th>
+                        <th scope="col">Tags</th>
                         <th class="text-center"colspan="3" class="text-center">Actions</th>
                     </tr>
                 </thead>
@@ -38,6 +39,11 @@
                         <td>{{ $post->author }}</td>
                         <td>{{ $post->content }}</td>
                         <td>{{ $post->category()->first()->name }}</td>
+                        <td>
+                            @foreach ($post->tags()->get() as $tag)
+                                    {{ $tag->name }}
+                            @endforeach
+                        </td>
                         <td><a class="btn btn-success" href="{{ route('admin.posts.show', $post->slug) }}">View</a></td>
                         <td>
                             @if (Auth::user()->id === $post->user_id)

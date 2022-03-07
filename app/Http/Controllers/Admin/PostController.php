@@ -8,6 +8,7 @@ use App\Model\Tag;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -68,12 +69,14 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'content' => 'required',
             'category_id' => 'exists:App\Model\Category,id',
-            'tags.*' => 'nullable|exists:App\Model\Tag,id'
+            'tags.*' => 'nullable|exists:App\Model\Tag,id',
+            'image' => 'nullable|image'
         ]);
 
-
-
-
+        if (!empty($data['image'])) {
+            $img_path = Storage::put('uploads', $data['image']);
+            $data['image'] = $img_path;
+        }
 
 
         $newPost = new Post();
@@ -84,6 +87,7 @@ class PostController extends Controller
         if (!empty($data['tags'])) {
             $newPost->tags()->attach($data['tags']);
         }
+
 
         return redirect()->route('admin.posts.show', $newPost->slug);
     }

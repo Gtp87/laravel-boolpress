@@ -27,7 +27,14 @@
             <div class="col">
                 {{ $post->content }}
             </div>
+            <div class="col">
+                <img class="img-fluid" src="{{asset('storage/' . $post->image)}}" alt="{{$post->title}}">
+            </div>
         </div>
         <a  class="btn btn-success"  aria-current="page" href="{{ route('admin.posts.index') }}">Back</a>
+        @if (Auth::user()->id === $post->user_id)
+            <a class="btn btn-success"
+                href="{{ route('admin.posts.edit', $post->slug) }}">Edit</a>
+        @endif
     </div>
 @endsection

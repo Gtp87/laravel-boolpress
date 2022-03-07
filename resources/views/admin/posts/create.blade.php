@@ -65,6 +65,11 @@
                     <div class="mb-3">
                         <label for="image" class="form-label">Inserisci immagine</label>
                         <input class="form-control" type="file" id="image" name="image">
+                        @error('image')
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
                     <input class="btn btn-success" type="submit" value="Save">

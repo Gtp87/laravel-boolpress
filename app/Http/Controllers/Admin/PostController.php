@@ -133,7 +133,8 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'content' => 'required',
             'category_id' => 'exists:App\Model\Category,id',
-            'tags.*' => 'nullable|exists:App\Model\Tag,id'
+            'tags.*' => 'nullable|exists:App\Model\Tag,id',
+            'image' => 'nullable|image'
         ]);
         $data = $request->all();
         if (Auth::user()->id != $post->user_id) {
@@ -149,6 +150,12 @@ class PostController extends Controller
         }
         if ($data['category_id'] != $post->category_id) {
             $post->category_id = $data['category_id'];
+        }
+
+        if (!empty($data['image'])) {
+            Storage::delete($post->image);
+            $img_path = Storage::put('uploads', $data['image']);
+            $post->image = $img_path;
         }
 
         $post->update();

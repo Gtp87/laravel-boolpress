@@ -33,6 +33,6 @@ Route::middleware('auth')
         Route::get('/myposts', 'PostController@indexUser')->name('posts.indexUser');
     });
 
-Route::get('{any?}', function ($name = null) {
+Route::get('{any?}', function () {
     return view('guest.welcome');
 })->where('any', '.*')->name('guest.index');

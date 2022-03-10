@@ -40,7 +40,7 @@ export default {
     props: ["id"],
     data() {
         return {
-            post: null,
+            post: [],
         };
     },
     created() {
@@ -51,7 +51,6 @@ export default {
     methods: {
         getPost(url) {
             Axios.get(url).then((result) => {
-                console.log(result);
                 this.post = result.data.results.data;
             });
         },

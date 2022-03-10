@@ -1,12 +1,12 @@
 <template>
     <div class="container mt-3">
         <div class="row row-cols-1 row-cols-md-4 g-4">
-            <div class="col" v-for="(post, index) in posts" :key="index">
+            <div class="col" v-for="(post, index) in cards.posts" :key="index">
                 <div class="card">
                     <img
                         :src="'/storage/' + post.image"
                         class="card-img-top"
-                        :alt="post.name"
+                        :alt="post.title"
                     />
                     <div class="card-body">
                         <h5 class="card-title">{{ post.title }}</h5>
@@ -19,7 +19,7 @@
             <ul class="list-inline bg-light">
                 <li class="list-inline-item">
                     <button
-                        v-if="prev_page_url"
+                        v-if="cards.prev_page_url"
                         class="btn btn-success"
                         @click="changePage('prev_page_url')"
                     >
@@ -28,7 +28,7 @@
                 </li>
                 <li class="list-inline-item">
                     <button
-                        v-if="next_page_url"
+                        v-if="cards.next_page_url"
                         class="btn btn-success"
                         @click="changePage('next_page_url')"
                     >
@@ -41,32 +41,12 @@
 </template>
 
 <script>
-import Axios from "axios";
 export default {
     name: "Main",
-    data() {
-        return {
-            posts: null,
-            next_page_url: null,
-            prev_page_url: null,
-        };
-    },
-    created() {
-        this.getPosts("http://127.0.0.1:8000/api/posts");
-    },
+    props: ["cards"],
     methods: {
         changePage(vs) {
-            let url = this[vs];
-            if (url) {
-                this.getPosts(url);
-            }
-        },
-        getPosts(url) {
-            Axios.get(url).then((result) => {
-                this.posts = result.data.results.data;
-                this.next_page_url = result.data.results.next_page_url;
-                this.prev_page_url = result.data.results.prev_page_url;
-            });
+            this.$emit("changePage", vs);
         },
     },
 };

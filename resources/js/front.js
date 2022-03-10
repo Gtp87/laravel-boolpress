@@ -50,6 +50,13 @@ const router = new VueRouter({
                 component: Contacts
             },
             
+            {
+                path: '/products/:id',
+                name: 'product',
+                props: true,
+                component: Post
+            },
+            
             
         ]
 });

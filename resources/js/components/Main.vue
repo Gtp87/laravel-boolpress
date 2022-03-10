@@ -4,7 +4,14 @@
             <div class="col" v-for="(post, index) in cards.posts" :key="index">
                 <div class="card">
                     <img
+                        v-if="post.image"
                         :src="'/storage/' + post.image"
+                        class="card-img-top"
+                        :alt="post.title"
+                    />
+                    <img
+                        v-else
+                        src="/storage/uploads/default.png"
                         class="card-img-top"
                         :alt="post.title"
                     />
@@ -12,6 +19,11 @@
                         <h5 class="card-title">{{ post.title }}</h5>
                         <p class="card-text">{{ post.content }}</p>
                     </div>
+                    <router-link
+                        class="btn btn-success"
+                        :to="{ name: 'post', params: { id: post.id } }"
+                        >View</router-link
+                    >
                 </div>
             </div>
         </div>
@@ -52,4 +64,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.card {
+    height: 100%;
+}
+</style>

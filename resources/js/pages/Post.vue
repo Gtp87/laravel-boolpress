@@ -50,7 +50,9 @@ export default {
 
     methods: {
         getPost(url) {
-            Axios.get(url).then((result) => {
+            Axios.get(url, {
+                headers: { Authorization: "Bearer 1234abcd" },
+            }).then((result) => {
                 this.post = result.data.results.data;
             });
         },
